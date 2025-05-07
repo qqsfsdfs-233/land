@@ -133,15 +133,6 @@
         },
         mounted(){
             this.init()
-            this.$nextTick(() => {
-                const qrImage = document.getElementById('qrImage');
-                // 绑定事件监听器
-                qrImage.addEventListener('touchstart', this.handleLongPressStart);
-                qrImage.addEventListener('mousedown', this.handleLongPressStart);
-                qrImage.addEventListener('touchend', this.handleLongPressEnd);
-                qrImage.addEventListener('mouseup', this.handleLongPressEnd);
-                qrImage.addEventListener('mouseleave', this.handleLongPressEnd);
-            });
         },
         methods:{
             handleLongPressStart: function () {
@@ -188,12 +179,27 @@
                         .then(data => {
                         console.log(data);
                         this.code_obj = data;
+                        this.bindQrImageEvents();
                     }).catch(error => {
                         console.error('请求失败:', error);
                     });
                 } else {
                     console.warn('未找到 id 参数');
                 }
+            },
+            bindQrImageEvents:function() {
+                this.$nextTick(() => {
+                    const qrImage = document.getElementById('qrImage');
+                    if (qrImage) {
+                        qrImage.addEventListener('touchstart', this.handleLongPressStart);
+                        qrImage.addEventListener('mousedown', this.handleLongPressStart);
+                        qrImage.addEventListener('touchend', this.handleLongPressEnd);
+                        qrImage.addEventListener('mouseup', this.handleLongPressEnd);
+                        qrImage.addEventListener('mouseleave', this.handleLongPressEnd);
+                    } else {
+                        console.warn('二维码图片未渲染完成或不存在');
+                    }
+                });
             },
             next:function () {
                 if(this.index===this.code_obj.code_urls.length){
