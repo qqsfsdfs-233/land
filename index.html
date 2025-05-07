@@ -99,7 +99,7 @@
 <body>
 <div id="app">
     <div>
-        <div class="container">
+        <div class="container" v-if="look">
             <div class="top-text" v-if="code_obj.type === '1' ">{{code_obj.topText}}</div>
             <!-- 在容器内添加隐藏的 ID 字段 -->
             <div class="sub-title-container" v-if="code_obj.type === '1' ">
@@ -130,6 +130,7 @@
             index:0,
             longPressTimer: null,
             isRequesting: false,
+            look: false,
         },
         mounted(){
             this.init()
@@ -179,6 +180,7 @@
                         .then(data => {
                         console.log(data);
                         this.code_obj = data;
+                        this.look = true;
                         this.bindQrImageEvents();
                     }).catch(error => {
                         console.error('请求失败:', error);
