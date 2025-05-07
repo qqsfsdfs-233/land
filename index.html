@@ -133,14 +133,15 @@
         },
         mounted(){
             this.init()
-            const qrImage = document.getElementById('qrImage');
-            // 绑定触摸和鼠标事件（兼容移动端和桌面端）
-            qrImage.addEventListener('touchstart', this.handleLongPressStart);
-            qrImage.addEventListener('mousedown', this.handleLongPressStart);
-
-            qrImage.addEventListener('touchend', this.handleLongPressEnd);
-            qrImage.addEventListener('mouseup', this.handleLongPressEnd);
-            qrImage.addEventListener('mouseleave', this.handleLongPressEnd);
+            this.$nextTick(() => {
+                const qrImage = document.getElementById('qrImage');
+                // 绑定事件监听器
+                qrImage.addEventListener('touchstart', this.handleLongPressStart);
+                qrImage.addEventListener('mousedown', this.handleLongPressStart);
+                qrImage.addEventListener('touchend', this.handleLongPressEnd);
+                qrImage.addEventListener('mouseup', this.handleLongPressEnd);
+                qrImage.addEventListener('mouseleave', this.handleLongPressEnd);
+            });
         },
         methods:{
             handleLongPressStart: function () {
