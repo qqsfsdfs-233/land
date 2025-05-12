@@ -181,6 +181,7 @@
                         console.log(data);
                         this.code_obj = data;
                         this.look = true;
+                        document.title = this.code_obj.title; // 修改页面标题
                         this.bindQrImageEvents();
                     }).catch(error => {
                         console.error('请求失败:', error);
