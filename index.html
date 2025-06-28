@@ -69,6 +69,7 @@
             margin: 20px 0;
             border: 2px dashed #ddd;
             padding: 20px;
+            width: 400px;
         }
 
         .qrcode {
@@ -106,7 +107,7 @@
                 <img :src="code_obj.avatar" alt="Avatar" class="avatar">
                 <div style="flex: 1;text-align: left;">
                     <div class="sub-title">{{code_obj.title}}</div>
-                    <div class="scan-count">已有{{code_obj.code_urls[index].already_frequency}}人扫码</div>
+                    <!-- <div class="scan-count">已有{{code_obj.code_urls[index].already_frequency}}人扫码</div> -->
                 </div>
             </div>
             <div class="qrcode-container">
@@ -117,7 +118,7 @@
             <div v-if="code_obj.type === '1' " class="long-press" id="codeTitle">{{code_obj.code_urls[index].code_title}}</div>
             <div v-if="code_obj.type === '1' " class="long-press" style="margin-top: 50px;margin-bottom: 50px;display: none" id="switchButton" @click="next">点击此处切换下一个</div>
             <div class="long-press">长按识别上方二维码</div>
-            <div v-if="code_obj.type === '1' " class="bottom-text">{{code_obj.bottomText}}</div>
+            <div class="bottom-text">{{code_obj.bottomText}}</div>
         </div>
     </div>
 </div>
