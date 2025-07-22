@@ -117,7 +117,7 @@
                 </a>
             </div>
             <div v-if="code_obj.type === '1' " class="long-press" id="codeTitle">{{code_obj.code_urls[index].code_title}}</div>
-            <div v-if="code_obj.type === '1' " class="long-press" style="margin-top: 50px;margin-bottom: 50px;display: none" id="switchButton" @click="next">点击此处切换下一个</div>
+            <div v-if="code_obj.type === '1' " class="long-press" style="margin-top: 50px;margin-bottom: 50px;" id="switchButton" @click="next">点击此处切换下一个</div>
             <div class="long-press">长按识别上方二维码</div>
             <div class="bottom-text">{{code_obj.bottomText}}</div>
         </div>
